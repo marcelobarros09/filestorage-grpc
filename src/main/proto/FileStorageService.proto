@@ -1,0 +1,33 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.example.filestorage.grpc.service;
+
+message FileStorageUploadRequest {
+  string filename = 2;
+  bytes bytes = 3;
+  map<string, string> metadata = 4;
+}
+
+message FileStorageUploadResponse {
+  bool success = 1;
+  string fileId = 2;
+  string errorMessage = 3;
+}
+
+message FileStorageDownloadRequest {
+  string fileId = 1;
+}
+
+message FileStorageDownloadResponse {
+  bool success = 1;
+  string fileId = 2;
+  string filename = 3;
+  bytes bytes = 4;
+  map<string, string> metadata = 5;
+  string errorMessage = 6;
+}
+
+service FileStorageService {
+  rpc upload(FileStorageUploadRequest) returns (FileStorageUploadResponse);
+  rpc download(FileStorageDownloadRequest) returns (FileStorageDownloadResponse);
+}

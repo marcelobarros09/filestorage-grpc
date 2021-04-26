@@ -1,0 +1,24 @@
+filestorage:
+  baseDirectory: files/
+
+azure:
+  storage:
+    container: ${AZURE_STORAGE_CONTAINER}
+    endpoint: ${AZURE_STORAGE_ENDPOINT}
+    accountName: ${AZURE_STORAGE_ACCOUNTNAME}
+    accountKey: ${AZURE_STORAGE_ACCOUNTKEY}
+
+spring:
+  data:
+    mongodb:
+      database: filestorage
+      host: localhost
+      port: 27017
+      username: mongo
+      password: mongo
+      authentication-database: admin
+
+grpc:
+  server:
+    port: 9000
+    maxInboundMessageSize: 10485760
